@@ -1,10 +1,9 @@
-
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JMO 2000 B3 — Equilateral Triangle Inside a Rhombus</title>
+<title>JMO 2000 B3 — Rigorous Proof of AB = BP</title>
 <style>
 :root{
   --ink:#172033;
@@ -191,6 +190,40 @@ math[display="block"]{display:block;text-align:center;margin:.28rem auto}
 .fact-grid>div{padding:12px 14px;border:1px solid #dfe5ef;border-radius:13px;background:#fff}
 @media(max-width:650px){.fact-grid{grid-template-columns:1fr}}
 
+.given-quote{
+  margin:14px 0;padding:15px 17px;border-radius:14px;
+  border:2px solid #d8c07a;background:#fff9e8;color:#5f4300
+}
+.given-quote .quote-label{
+  display:block;font-size:.78rem;font-weight:950;letter-spacing:.08em;
+  text-transform:uppercase;color:#7d5200;margin-bottom:5px
+}
+.given-quote strong{font-size:1.04rem}
+.proof-table{
+  width:100%;border-collapse:separate;border-spacing:0;
+  margin:15px 0;border:1px solid #dfe5ef;border-radius:14px;overflow:hidden
+}
+.proof-table th,.proof-table td{
+  padding:12px 13px;text-align:left;vertical-align:top;border-bottom:1px solid #e3e8f0
+}
+.proof-table th{background:#f4f7fb;font-size:.92rem}
+.proof-table th:first-child,.proof-table td:first-child{width:44%}
+.proof-table tr:last-child td{border-bottom:0}
+.proof-table .conclusion td{background:#effaf2;font-weight:850}
+.logic-bridge{
+  display:grid;grid-template-columns:1fr auto 1fr;gap:11px;align-items:stretch;margin:14px 0
+}
+.logic-bridge>div{
+  padding:13px 14px;border:1px solid #dfe5ef;border-radius:13px;background:#fff;text-align:center
+}
+.logic-bridge .bridge{
+  display:grid;place-items:center;border-color:#dfc77e;background:#fff9e8;font-weight:950
+}
+@media(max-width:700px){
+  .logic-bridge{grid-template-columns:1fr}
+  .proof-table th:first-child,.proof-table td:first-child{width:auto}
+}
+
 .angle-budget{
   display:grid;
   grid-template-columns:1fr auto 1fr auto 1fr;
@@ -235,7 +268,7 @@ footer{margin-top:30px;text-align:center;color:var(--muted);font-size:.9rem}
 <body>
 <main>
   <section class="hero">
-    <p class="eyebrow">JMO 2000 B3 · fully illustrated angle chase</p>
+    <p class="eyebrow">JMO 2000 B3 · rigorous equality-proof edition</p>
     <h1>Find the angle <em>x</em> in the rhombus</h1>
     <p class="lead">
       The whole problem collapses to three angles at the bottom-right corner:
@@ -248,9 +281,10 @@ footer{margin-top:30px;text-align:center;color:var(--muted);font-size:.9rem}
       </math>
     </div>
     <div class="notice">
-      The crucial information is not merely that the inner triangle is equilateral.
-      Its side length is also equal to every side of the rhombus. That creates two
-      extra isosceles triangles.
+      The cross-shape equality <strong>AB = BP</strong> is not guessed from the drawing.
+      It follows from the problem's explicit extra condition:
+      <strong>“The sides of the rhombus are equal in length to the sides of the triangle.”</strong>
+      The proof below separates the two definitions and then joins them by transitivity.
     </div>
   </section>
 
@@ -286,6 +320,16 @@ footer{margin-top:30px;text-align:center;color:var(--muted);font-size:.9rem}
           equilateral triangle is B.
         </p>
         <p>Thus the equilateral triangle is <strong>PBQ</strong>.</p>
+        <div class="given-quote">
+          <span class="quote-label">The bridging premise stated in the question</span>
+          <strong>“The sides of the rhombus are equal in length to the sides of the triangle.”</strong>
+          <p style="margin:.65rem 0 0">
+            This is a separate given. A rhombus definition alone compares only rhombus sides,
+            and an equilateral-triangle definition alone compares only triangle sides.
+            The quoted sentence is what permits a rhombus side such as AB to be equated to
+            a triangle side such as BP.
+          </p>
+        </div>
         <div class="notice blue">
           The required angle is
           <math><mrow><mo>∠</mo><mi>D</mi><mi>A</mi><mi>B</mi><mo>=</mo><mi>x</mi><mo>°</mo></mrow></math>.
@@ -313,7 +357,7 @@ footer{margin-top:30px;text-align:center;color:var(--muted);font-size:.9rem}
         </div>
         <nav class="controls" aria-label="Proof stages">
           <button type="button" data-stage="0">1. Label the figure</button>
-          <button type="button" data-stage="1">2. Mark all equal lengths</button>
+          <button type="button" data-stage="1">2. Prove AB = BP rigorously</button>
           <button type="button" data-stage="2">3. Lower-left isosceles triangle</button>
           <button type="button" data-stage="3">4. Upper-right isosceles triangle</button>
           <button type="button" data-stage="4">5. Use the equilateral 60° angle</button>
@@ -334,56 +378,106 @@ footer{margin-top:30px;text-align:center;color:var(--muted);font-size:.9rem}
     <div class="card step-card">
       <div class="copy">
         <span class="step-number">1</span>
-        <h2>Write down all the equal lengths</h2>
-        <p>A rhombus has four equal sides:</p>
-        <div class="math-box">
-          <math display="block">
-            <mrow>
-              <mi>A</mi><mi>B</mi>
-              <mo>=</mo><mi>B</mi><mi>C</mi>
-              <mo>=</mo><mi>C</mi><mi>D</mi>
-              <mo>=</mo><mi>D</mi><mi>A</mi>
-            </mrow>
-          </math>
-        </div>
-        <p>The triangle PBQ is equilateral:</p>
-        <div class="math-box">
-          <math display="block">
-            <mrow>
-              <mi>P</mi><mi>B</mi>
-              <mo>=</mo><mi>B</mi><mi>Q</mi>
-              <mo>=</mo><mi>Q</mi><mi>P</mi>
-            </mrow>
-          </math>
-        </div>
+        <h2>Prove rigorously that AB = BP</h2>
         <p>
-          The problem states that the rhombus sides and triangle sides have the
-          same length. Therefore all seven displayed segments have one common length:
+          We must not jump directly from “ABCD is a rhombus” and “PBQ is equilateral”
+          to AB = BP. Those two shape definitions create two separate groups of equal
+          lengths. The problem supplies one additional premise that connects the groups.
         </p>
+
+        <div class="logic-bridge">
+          <div>
+            <strong>Rhombus definition</strong>
+            <math display="block">
+              <mrow>
+                <mi>A</mi><mi>B</mi>
+                <mo>=</mo><mi>B</mi><mi>C</mi>
+                <mo>=</mo><mi>C</mi><mi>D</mi>
+                <mo>=</mo><mi>D</mi><mi>A</mi>
+                <mo>=</mo><mi>r</mi>
+              </mrow>
+            </math>
+          </div>
+          <div class="bridge">
+            The question gives<br>
+            <math display="block"><mrow><mi>r</mi><mo>=</mo><mi>t</mi></mrow></math>
+          </div>
+          <div>
+            <strong>Equilateral-triangle definition</strong>
+            <math display="block">
+              <mrow>
+                <mi>P</mi><mi>B</mi>
+                <mo>=</mo><mi>B</mi><mi>Q</mi>
+                <mo>=</mo><mi>Q</mi><mi>P</mi>
+                <mo>=</mo><mi>t</mi>
+              </mrow>
+            </math>
+          </div>
+        </div>
+
+        <div class="given-quote">
+          <span class="quote-label">Exact extra given</span>
+          <strong>“The sides of the rhombus are equal in length to the sides of the triangle.”</strong>
+          <p style="margin:.65rem 0 0">
+            If the common rhombus-side length is r and the common triangle-side length is t,
+            this sentence means precisely
+            <math><mrow><mi>r</mi><mo>=</mo><mi>t</mi></mrow></math>.
+          </p>
+        </div>
+
+        <table class="proof-table" aria-label="Formal proof that AB equals BP">
+          <thead>
+            <tr><th>Statement</th><th>Reason</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><math><mrow><mi>A</mi><mi>B</mi><mo>=</mo><mi>r</mi></mrow></math></td>
+              <td>AB is a side of rhombus ABCD, whose common side length is r.</td>
+            </tr>
+            <tr>
+              <td><math><mrow><mi>P</mi><mi>B</mi><mo>=</mo><mi>t</mi></mrow></math></td>
+              <td>PB is a side of equilateral triangle PBQ, whose common side length is t.</td>
+            </tr>
+            <tr>
+              <td><math><mrow><mi>r</mi><mo>=</mo><mi>t</mi></mrow></math></td>
+              <td>The problem explicitly states that a rhombus side and a triangle side have equal length.</td>
+            </tr>
+            <tr class="conclusion">
+              <td><math><mrow><mi>A</mi><mi>B</mi><mo>=</mo><mi>P</mi><mi>B</mi></mrow></math></td>
+              <td>Transitive property of equality: AB = r, r = t, and t = PB.</td>
+            </tr>
+          </tbody>
+        </table>
+
         <div class="math-box emphasis">
           <math display="block">
             <mrow>
               <mi>A</mi><mi>B</mi>
-              <mo>=</mo><mi>B</mi><mi>C</mi>
-              <mo>=</mo><mi>C</mi><mi>D</mi>
-              <mo>=</mo><mi>D</mi><mi>A</mi>
+              <mo>=</mo><mi>r</mi>
+              <mo>=</mo><mi>t</mi>
               <mo>=</mo><mi>P</mi><mi>B</mi>
+            </mrow>
+          </math>
+          <math display="block">
+            <mrow>
+              <mi>B</mi><mi>C</mi>
+              <mo>=</mo><mi>r</mi>
+              <mo>=</mo><mi>t</mi>
               <mo>=</mo><mi>B</mi><mi>Q</mi>
-              <mo>=</mo><mi>Q</mi><mi>P</mi>
             </mrow>
           </math>
         </div>
+
         <p class="reason">
-          For the proof, the two most useful consequences are
-          <math><mrow><mi>A</mi><mi>B</mi><mo>=</mo><mi>B</mi><mi>P</mi></mrow></math>
-          and
-          <math><mrow><mi>B</mi><mi>C</mi><mo>=</mo><mi>B</mi><mi>Q</mi></mrow></math>.
+          Therefore <strong>AB = BP</strong> and <strong>BC = BQ</strong> are proved from
+          the two definitions, the explicit cross-shape given, and transitivity. No side
+          has been measured from the drawing, and no visual assumption has been used.
         </p>
       </div>
       <figure class="visual">
         <svg class="diagram static-diagram" data-stage="1" viewBox="0 0 820 650"
-             role="img" aria-label="All equal rhombus and equilateral triangle sides"></svg>
-        <figcaption>Every marked segment has the same length.</figcaption>
+             role="img" aria-label="Rigorous proof that AB equals BP using common lengths r and t"></svg>
+        <figcaption>AB = r, PB = t, and the stated condition gives r = t; hence AB = BP.</figcaption>
       </figure>
     </div>
   </section>
@@ -405,9 +499,9 @@ footer{margin-top:30px;text-align:center;color:var(--muted);font-size:.9rem}
           </math>
         </div>
         <p>
-          We also know
-          <math><mrow><mi>A</mi><mi>B</mi><mo>=</mo><mi>B</mi><mi>P</mi></mrow></math>.
-          Hence triangle ABP is isosceles, with base AP.
+          Step 1 proved, rather than assumed, that
+          <math><mrow><mi>A</mi><mi>B</mi><mo>=</mo><mi>r</mi><mo>=</mo><mi>t</mi><mo>=</mo><mi>B</mi><mi>P</mi></mrow></math>.
+          Hence triangle ABP is isosceles, with equal sides AB and BP and base AP.
         </p>
         <p>Its base angles are equal:</p>
         <div class="math-box">
@@ -474,9 +568,9 @@ footer{margin-top:30px;text-align:center;color:var(--muted);font-size:.9rem}
           </math>
         </div>
         <p>
-          Now
-          <math><mrow><mi>B</mi><mi>C</mi><mo>=</mo><mi>B</mi><mi>Q</mi></mrow></math>,
-          so triangle BCQ is isosceles, with base CQ. Therefore
+          The same rigorous chain from Step 1 gives
+          <math><mrow><mi>B</mi><mi>C</mi><mo>=</mo><mi>r</mi><mo>=</mo><mi>t</mi><mo>=</mo><mi>B</mi><mi>Q</mi></mrow></math>.
+          Hence triangle BCQ is isosceles, with equal sides BC and BQ and base CQ. Therefore
         </p>
         <div class="math-box">
           <math display="block">
@@ -656,7 +750,7 @@ footer{margin-top:30px;text-align:center;color:var(--muted);font-size:.9rem}
       <div class="one-line">
         <math display="block">
           <mrow>
-            <mi>A</mi><mi>B</mi><mo>=</mo><mi>B</mi><mi>P</mi>
+            <mi>A</mi><mi>B</mi><mo>=</mo><mi>r</mi><mo>=</mo><mi>t</mi><mo>=</mo><mi>B</mi><mi>P</mi>
             <mo>⇒</mo>
             <mo>∠</mo><mi>A</mi><mi>B</mi><mi>P</mi>
             <mo>=</mo><mn>180</mn><mo>°</mo><mo>−</mo><mn>2</mn><mi>x</mi><mo>°</mo>,
@@ -664,7 +758,7 @@ footer{margin-top:30px;text-align:center;color:var(--muted);font-size:.9rem}
         </math>
         <math display="block">
           <mrow>
-            <mi>B</mi><mi>C</mi><mo>=</mo><mi>B</mi><mi>Q</mi>
+            <mi>B</mi><mi>C</mi><mo>=</mo><mi>r</mi><mo>=</mo><mi>t</mi><mo>=</mo><mi>B</mi><mi>Q</mi>
             <mo>⇒</mo>
             <mo>∠</mo><mi>Q</mi><mi>B</mi><mi>C</mi>
             <mo>=</mo><mn>180</mn><mo>°</mo><mo>−</mo><mn>2</mn><mi>x</mi><mo>°</mo>,
@@ -694,10 +788,11 @@ footer{margin-top:30px;text-align:center;color:var(--muted);font-size:.9rem}
     <div class="card">
       <div class="fact-grid">
         <div>
-          <h3>Using only “rhombus”</h3>
+          <h3>Treating AB = BP as a visual assumption</h3>
           <p>
-            A rhombus alone does not force x. The equal side length of the inner
-            equilateral triangle is essential.
+            “Rhombus” proves equality only among AB, BC, CD and DA. “Equilateral” proves
+            equality only among PB, BQ and QP. The cross-shape equality AB = BP follows
+            from the separate written condition that the two common side lengths are equal.
           </p>
         </div>
         <div>
@@ -735,7 +830,11 @@ footer{margin-top:30px;text-align:center;color:var(--muted);font-size:.9rem}
       </math>
     </div>
     <p>
-      The quickest idea is to split the angle at B into
+      Before that angle split is valid, the side equalities must be justified:
+      <math><mrow><mi>A</mi><mi>B</mi><mo>=</mo><mi>r</mi><mo>=</mo><mi>t</mi><mo>=</mo><mi>B</mi><mi>P</mi></mrow></math>
+      and
+      <math><mrow><mi>B</mi><mi>C</mi><mo>=</mo><mi>r</mi><mo>=</mo><mi>t</mi><mo>=</mo><mi>B</mi><mi>Q</mi></mrow></math>.
+      The angle at B then splits into
       <math><mrow><mo>(</mo><mn>180</mn><mo>−</mo><mn>2</mn><mi>x</mi><mo>)</mo><mo>°</mo></mrow></math>,
       60°, and another
       <math><mrow><mo>(</mo><mn>180</mn><mo>−</mo><mn>2</mn><mi>x</mi><mo>)</mo><mo>°</mo></mrow></math>.
@@ -758,18 +857,18 @@ footer{margin-top:30px;text-align:center;color:var(--muted);font-size:.9rem}
   let timer=null;
 
   const stageText=[
-    "<strong>Label the figure.</strong> ABCD is the rhombus. P lies on AD, Q lies on DC, and PBQ is the equilateral triangle. The required angle DAB is x°.",
-    "<strong>Use the shared side length.</strong> Every rhombus side and every equilateral-triangle side has the same length. In particular, AB = BP and BC = BQ.",
-    "<strong>Lower-left isosceles triangle.</strong> In triangle ABP, AB = BP. The angle at A is x°, so the angle at P is also x°. Hence ∠ABP = 180° − 2x.",
-    "<strong>Upper-right isosceles triangle.</strong> The rhombus angle at C equals x°. Since BC = BQ, triangle BCQ has two base angles x°, so ∠QBC = 180° − 2x.",
+    "<strong>Label the figure and read every premise.</strong> ABCD is the rhombus. P lies on AD, Q lies on DC, and PBQ is equilateral. The question separately states that a rhombus side and a triangle side have the same length.",
+    "<strong>Prove AB = BP rigorously.</strong> Let every rhombus side have length r and every equilateral-triangle side have length t. Then AB = r and BP = t. The explicit given says r = t. Therefore AB = r = t = BP by transitivity. Likewise BC = r = t = BQ.",
+    "<strong>Lower-left isosceles triangle.</strong> The preceding chain proved AB = BP. The angle at A is x°, so the equal base angle at P is also x°. Hence ∠ABP = 180° − 2x.",
+    "<strong>Upper-right isosceles triangle.</strong> The rhombus angle at C equals x°. The preceding chain proved BC = BQ, so triangle BCQ has two base angles x° and ∠QBC = 180° − 2x.",
     "<strong>Use the equilateral triangle.</strong> Its angle ∠PBQ is 60°. This sits between the two angles 180° − 2x at B.",
     "<strong>Build one equation.</strong> The entire rhombus angle at B is 180° − x. Therefore (180 − 2x) + 60 + (180 − 2x) = 180 − x.",
     "<strong>Solve.</strong> The equation reduces to 240 = 3x, giving x = 80°. The B-angle check is 20° + 60° + 20° = 100°."
   ];
 
   const captions=[
-    "A clean labelled version of the original problem.",
-    "All four rhombus sides and all three triangle sides are equal.",
+    "A clean labelled version, including the explicit cross-shape side-length premise.",
+    "AB = r, BP = t and the given r = t prove AB = BP by transitivity.",
     "Triangle ABP gives the first angle 180° − 2x at B.",
     "Triangle BCQ gives the second angle 180° − 2x at B.",
     "The middle angle at B is 60°.",
@@ -912,19 +1011,30 @@ footer{margin-top:30px;text-align:center;color:var(--muted);font-size:.9rem}
     angleLabel(svg,A,88,aAD,aAB+360,stage===6?"80°":"x°","#9d2767");
 
     if(stage===0){
-      badge(svg,407,90,315,"PBQ is equilateral","#eefaf1");
-      badge(svg,408,592,355,"all triangle and rhombus sides match","#fff9e8");
+      badge(svg,407,82,315,"PBQ is equilateral","#eefaf1");
+      badge(svg,408,130,430,"explicit given: rhombus side = triangle side","#fff9e8");
+      badge(svg,408,592,360,"do not infer AB = BP from appearance","#fff1f8");
     }
 
     if(stage===1){
-      // Uniform ticks on all seven sides.
-      [ [A,B],[B,C],[C,D],[D,A],[P,B],[B,Q],[Q,P] ].forEach(pair=>tick(svg,pair[0],pair[1],1,"#247c45"));
-      line(svg,A,B,"blue-edge");
-      line(svg,B,P,"blue-edge");
-      line(svg,B,C,"gold-edge");
-      line(svg,B,Q,"gold-edge");
-      badge(svg,390,92,360,"AB = BP and BC = BQ","#fff");
-      badge(svg,390,592,320,"all seven sides have length s","#eefaf1");
+      // First show the two internally equal groups separately.
+      [ [A,B],[B,C],[C,D],[D,A] ].forEach(pair=>{
+        line(svg,pair[0],pair[1],"blue-edge");
+        tick(svg,pair[0],pair[1],1,"#287f97");
+      });
+      [ [P,B],[B,Q],[Q,P] ].forEach(pair=>{
+        line(svg,pair[0],pair[1],"gold-edge");
+        tick(svg,pair[0],pair[1],2,"#a56b00");
+      });
+
+      // Then highlight the particular cross-shape equality proved by the extra given.
+      line(svg,A,B,"green-edge");
+      line(svg,B,P,"green-edge");
+
+      badge(svg,390,72,390,"Rhombus: AB = BC = CD = DA = r","#effbfe");
+      badge(svg,390,120,380,"Equilateral: PB = BQ = QP = t","#fff9e8");
+      badge(svg,390,168,260,"Given: r = t","#f5efff");
+      badge(svg,390,592,440,"Therefore AB = r = t = BP","#eefaf1");
     }
 
     if(stage===2){
